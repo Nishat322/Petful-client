@@ -1,0 +1,63 @@
+.LandingPage {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    max-width: 1500px;
+}
+  
+.LandingPage__title {
+    display: flex;
+    z-index: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 100px;
+    font-size: 1.5em;
+    justify-content: center;
+}
+  
+.LandingPage__summary {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    font-weight: 80px;
+    font-size: 1.1em;
+    justify-content: center;
+}
+  
+.LandingPage__image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 35%;
+    width: 400px;
+    height: auto;
+}
+  
+.LandingPage__adopt {
+    display: flex;
+    margin-left: 220px;
+    margin-right: 220px;
+    margin-top: 50px;
+    justify-content: center;
+}
+  
+.button {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #2c2a2a;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+  

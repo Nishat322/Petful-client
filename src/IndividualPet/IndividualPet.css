@@ -1,0 +1,49 @@
+.IndividualPet {
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px;
+    padding: 20px;
+    max-height: 450px;
+    min-width: 100px;
+    background-color: #e7e7e7;
+    z-index: 1;
+    border-radius: 25%;
+}
+
+.IndividualPet__title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+  
+.IndividualPet > img {
+    max-height: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 10%;
+}
+  
+.IndividualPet > button {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+    background:   rgb(153, 108, 108);
+    border: 2px solid;
+    margin-top: 10px;
+    border-color: white;
+    color: black;
+    border-radius: 15%;
+}
+  
+.IndividualPet > button:disabled {
+    opacity: 0.4;
+}
+  
+.IndividualPet__info {
+    height: 100px;
+    margin-bottom: 15px;
+}
