@@ -19,16 +19,16 @@ class IndividualPet extends Component {
     return (
       <div className='IndividualPet'>
         <p className = 'IndividualPet__title'>
-          Next available for adoption:
+          Available for adoption:
         </p>
         <br />
         <img src={this.props.pet.imageURL} alt='pic' />
         <div className='IndividualPet__info'>
-          <p>Name: {`${this.props.pet.name}`}</p>
-          <p>Age: {`${this.props.pet.age}`}</p>
+          <p>Name: Hello, My name is {`${this.props.pet.name}`}</p>
+          <p>Age: I am {`${this.props.pet.age}`} years old</p>
           <p>Breed: {`${this.props.pet.breed}`}</p>
           <p>Description: {`${this.props.pet.description}`}</p>
-          <p>Story: {`${this.props.pet.story}`}</p>
+          <p>This is my Story: {`${this.props.pet.story}`}</p>
         </div>
 
         <button
