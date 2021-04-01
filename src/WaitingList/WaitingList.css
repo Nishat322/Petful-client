@@ -1,0 +1,38 @@
+.WaitingList {
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight: 100px;
+    font-size: 1.4em;
+    color: black;
+    margin: 20px 50px;
+    text-align: center;
+}
+  
+.WaitingList > ul {
+    margin-bottom: 20px;
+    color: black;
+}
+  
+.WaitingList > button:disabled {
+    opacity: 0.4;
+}
+
+.WaitingList > ul > li{
+    list-style-type: none;
+    font-size: 18px;
+}
+  
+.Pet__joinButton {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 0.7em;
+    color: white;
+    background: #2c2a2a;
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: black;
+    border-radius: 10%;
+}

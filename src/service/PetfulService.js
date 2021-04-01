@@ -9,48 +9,6 @@ const PetfulApiService = {
       .catch((error) => console.error(error));
   },
 
-  getCat() {
-    return fetch(`${REACT_APP_API_BASE}/cats`, {
-      headers: {},
-    })
-      .then((res) =>
-        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-      )
-      .catch((error) => console.error(error));
-  },
-
-  adoptCat() {
-    return fetch(`${REACT_APP_API_BASE}/cats`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-    );
-  },
-
-  getDog() {
-    return fetch(`${REACT_APP_API_BASE}/dogs`, {
-      headers: {},
-    })
-      .then((res) =>
-        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-      )
-      .catch((error) => console.error(error));
-  },
-
-  adoptDog() {
-    return fetch(`${REACT_APP_API_BASE}/dogs`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-    );
-  },
-
   getPeople() {
     return fetch(`${REACT_APP_API_BASE}/people`, {
       headers: {},

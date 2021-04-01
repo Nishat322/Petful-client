@@ -1,32 +1,11 @@
 import React, { Component } from 'react'
 import PetfulService from '../service/PetfulService'
 import IndividualPet from '../IndividualPet/IndividualPet'
+import WaitingList from '../WaitingList/WaitingList'
+import REACT_APP_API_BASE from "../config";
+import fullNames from '../service/store'
 
-import './Pet.css'
-
-const names = [
-    'Harry',
-    'Roger',
-    'Robert',
-    'Steven',
-    'Tommy',
-    'Amy',
-    'Ty',
-    'Yuki',
-    'Bob',
-]
-
-const lastNames = [
-    'Ramachandran',
-    'Resnick',
-    'Stein',
-    'Willow',
-    'Ko',
-    'Haque',
-    'Chowdhury',
-    'Khan',
-    'Umeya',
-]
+import './Adopt.css'
 
 class Pet extends Component {
     state = {
@@ -42,24 +21,36 @@ class Pet extends Component {
     }
 
     componentDidMount() {
-        PetfulService
-            .getAllPets()
+        fetch(`${REACT_APP_API_BASE}/pets`)
+            .then((res) =>
+                !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+            )
+            .catch((error) => console.error(error))
             .then((pets) => {
                 this.setState({ pets })
             })
             .catch((error) => this.setState({ error }))
-        PetfulService
-            .getPeople()
+        fetch(`${REACT_APP_API_BASE}/people`, {
+            headers: {},
+        })
+            .then((res) =>
+                !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+            )
+            .catch((error) => console.error(error))
             .then((people) => this.setState({ people }))
     }
 
     fillQueue = () => {
         this.interval = setInterval(() => {
-            let first = names[Math.floor(Math.random() * names.length)]
-            let last = lastNames[Math.floor(Math.random() * lastNames.length)]
-
-            PetfulService.postPeople(`${first} ${last}`).then(() => {
-                PetfulService.getPeople()
+            let fullName = fullNames[Math.floor(Math.random() * fullNames.length)]
+            PetfulService.postPeople(`${fullName}`).then(() => {
+                fetch(`${REACT_APP_API_BASE}/people`, {
+                    headers: {},
+                })
+                    .then((res) =>
+                        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+                    )
+                    .catch((error) => console.error(error))
                     .then((people) => {
                         this.setState({ people })
                         if (this.state.people.length === 5) {
@@ -78,8 +69,11 @@ class Pet extends Component {
             PetfulService
                 .dequeuePet(type)
                 .then(() => {
-                    PetfulService
-                        .getAllPets()
+                    fetch(`${REACT_APP_API_BASE}/pets`)
+                        .then((res) =>
+                            !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+                        )
+                        .catch((error) => console.error(error))
                         .then((pets) => {
                             this.setState({ pets })
                         })
@@ -88,28 +82,33 @@ class Pet extends Component {
                 .then(() => {
                 PetfulService
                     .deletePerson().then(() => {
-                        PetfulService
-                            .getPeople()
-                        .then((people) => {
-                            this.setState({
-                            people,
-                            name: '',
-                            adoptionMessage: true,
-                            canAdopt: true,
-                            waiting: true,
-                            atFront: false,
+                        fetch(`${REACT_APP_API_BASE}/people`, {
+                            headers: {},
+                        })
+                            .then((res) =>
+                              !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+                            )
+                            .catch((error) => console.error(error))
+                            .then((people) => {
+                                this.setState({
+                                people,
+                                name: '',
+                                adoptionMessage: true,
+                                canAdopt: true,
+                                waiting: true,
+                                atFront: false,
+                                })
                             })
-                        })
-                        .catch((error) => {
-                            this.setState({ error })
-                        })
+                            .catch((error) => {
+                                this.setState({ error })
+                            })
                     })
                 })
         }, 3000)
     }
 
-    updateUserName = (newName) => {
-        this.setState({ name: newName })
+    updateUserName = (addedName) => {
+        this.setState({ name: addedName })
     }
 
     UpdateWaitingList = (name) => {
@@ -123,12 +122,15 @@ class Pet extends Component {
         PetfulService
             .dequeuePet(pet)
             .then(() => {
-            PetfulService
-                .getAllPets()
-                .then((pets) => {
-                    this.setState({ pets })
-                })
-                .catch((error) => this.setState({ error }))
+                fetch(`${REACT_APP_API_BASE}/pets`)
+                    .then((res) =>
+                    !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+                    )
+                    .catch((error) => console.error(error))
+                    .then((pets) => {
+                        this.setState({ pets })
+                    })
+                    .catch((error) => this.setState({ error }))
         })
     }
 
@@ -140,8 +142,13 @@ class Pet extends Component {
                     this.dequeuePet()
                 })
                 .then(() => {
-                PetfulService
-                    .getPeople()
+                fetch(`${REACT_APP_API_BASE}/people`, {
+                        headers: {},
+                })
+                    .then((res) =>
+                        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+                    )
+                    .catch((error) => console.error(error))
                     .then((people) => {
                         this.setState({ people })
                         if (people[0] === this.state.name) {
@@ -165,8 +172,13 @@ class Pet extends Component {
         PetfulService
             .postPeople(name)
             .then(
-                PetfulService
-                    .getPeople()
+                fetch(`${REACT_APP_API_BASE}/people`, {
+                    headers: {},
+                })
+                    .then((res) =>
+                      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+                    )
+                    .catch((error) => console.error(error))
                     .then((people) =>
                         this.setState({ people, waiting: true, inLine: true })
                     )
@@ -182,19 +194,15 @@ class Pet extends Component {
             <div className = 'Pet'>
                 <div className = 'Pet__description'>
                     <h1> Adopt a Pet </h1> 
-                    <p>
-                            These are the pets currently available for adoption. Please join the waiting
-                            list below. When it is your turn, you will be able to adopt a pet from the selection
-                            below
-                    </p>
                 </div>
-                <div className='Pet__container'>
+                <div className='Pet__individual-pet'>
                     <IndividualPet
                         handleAdoptClick={this.handleAdoptClick}
                         pet={this.state.pets.dog[0]}
                         type={'dog'}
                         canAdopt={this.state.canAdopt}
                     />
+                    <h2>OR </h2>
                     <IndividualPet
                         handleAdoptClick={this.handleAdoptClick}
                         pet={this.state.pets.cat[0]}
@@ -219,30 +227,13 @@ class Pet extends Component {
                         </h2>
                     )}
                 </div>
-                <div className='Pet__waitinglist'>
-                    <ul>
-                        The Waiting List 
-                        <br/>
-                        {this.state.people.join(' --> ')}
-                    </ul>
-                    <form onSubmit={this.handleClickSubmit}>
-                        <h5>Enter Your Name Below</h5>
-                            <input
-                                type='text'
-                                id='user_name'
-                                value={this.state.name}
-                                onChange={(e) => this.updateUserName(e.target.value)}
-                            />
-                        <br />
-                        <button
-                            type='submit'
-                            className='Pet__joinButton'
-                            disabled={this.state.waiting}
-                        >
-                            Join the waiting list!
-                        </button>
-                    </form>
-                </div>
+                <WaitingList
+                    people = {this.state.people}
+                    name = {this.state.name}
+                    waiting = {this.state.waiting}
+                    updateUserName = {this.updateUserName}
+                    handleClickSubmit = {this.handleClickSubmit}
+                />
             </div>
         )
     }
