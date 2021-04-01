@@ -1,4 +1,9 @@
-.Adopt {
+.Process__hidden {
+    color: rgb(238, 2, 2);
+    background-color: white;
+}
+
+.Process {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
@@ -7,9 +12,3 @@
     font-size: 1.2em;
     color: black;
 }
-  
-.Adopt__position {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }

@@ -7,7 +7,10 @@
     font-size: 1.4em;
     color: black;
     margin: 20px 50px;
+    padding: 20px 80px 20px 50px;
     text-align: center;
+    background-color: #e7e7e7;
+    border-radius: 10%;
 }
   
 .WaitingList > ul {
@@ -24,7 +27,7 @@
     font-size: 18px;
 }
   
-.Pet__joinButton {
+.WaitingList__joinButton {
     font-family: 'Times New Roman', Times, serif;
     font-size: 0.7em;
     color: white;
