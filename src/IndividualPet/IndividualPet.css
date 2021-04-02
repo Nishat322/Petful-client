@@ -6,7 +6,7 @@
     justify-content: flex-end;
     margin: 20px;
     padding: 20px;
-    max-height: 450px;
+    max-height: 800px;
     min-width: 100px;
     background-color: #e7e7e7;
     z-index: 1;
@@ -16,7 +16,7 @@
 .IndividualPet__title {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
 }
   
 .IndividualPet > img {
@@ -46,4 +46,41 @@
 .IndividualPet__summary {
     height: 100px;
     margin-bottom: 15px;
+    font-size: 10px;
 }
+
+@media screen and (min-width: 600px) {
+    .IndividualPet__title {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .IndividualPet__summary {
+        height: 100px;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .IndividualPet {
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 20px;
+        padding: 20px;
+        max-height: 450px;
+        min-width: 100px;
+        background-color: #e7e7e7;
+        z-index: 1;
+        border-radius: 25%;
+    }
+
+    .IndividualPet__title {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 18px;
+    }
+  }
+  

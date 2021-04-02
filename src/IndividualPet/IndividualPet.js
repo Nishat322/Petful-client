@@ -24,7 +24,7 @@ class IndividualPet extends Component {
         <br />
         <img src={this.props.pet.imageURL} alt='pic' />
         <div className='IndividualPet__summary'>
-          <p>Name: Hello, My name is {`${this.props.pet.name}`}</p>
+          Name: Hello, My name is {`${this.props.pet.name}`}
           <p>Age: I am {`${this.props.pet.age}`} years old</p>
           <p>Breed: {`${this.props.pet.breed}`}</p>
           <p>Description: {`${this.props.pet.description}`}</p>
