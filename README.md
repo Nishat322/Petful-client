@@ -2,8 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Live Deployment
-https://petful-client-lyart.vercel.app/
+Live application: [https://petful-client-lyart.vercel.app/](https://petful-client-lyart.vercel.app/)
+
+API Repo: [https://github.com/Nishat322/Petful-api](https://github.com/Nishat322/Petful-api)
+
 
 ## User Story
 
